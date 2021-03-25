@@ -1,0 +1,110 @@
+<mission_data version="1.7" background_id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4" playerShipNames_arme="TSN Sabre\TSN Valiant\TSN Lancer\TSN Stalker\TSN Viper\TSN Horizon\TSN Necessity\TSN Hunter">
+  <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
+    <set_variable name="Coordinate X" value="200.0" />
+    <set_variable name="Coordinate Y" value="400.0" />
+    <set_variable name="Alignment" value="0.0" />
+  </start>
+  <folder_arme name="" id_arme="317b667b-dd92-4b4e-a730-080079c54ea5" expanded_arme="" />
+  <folder_arme name="" id_arme="809a742b-921b-4da3-bc27-d95daa4290dc" parent_id_arme="317b667b-dd92-4b4e-a730-080079c54ea5" expanded_arme="" />
+  <folder_arme name="" id_arme="ea454127-4d42-4f59-86e0-688e70818892" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc" expanded_arme="" />
+  <event name="Race 3 Active" id_arme="04c648ac-1242-40fd-b2bc-0ee940ff6ece" parent_id_arme="ea454127-4d42-4f59-86e0-688e70818892">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
+    <set_gm_button text="Misc Systems/Race 3 System" />
+    <set_variable name="Race 3 Gate" value="1.0" />
+  </event>
+  <event name="Clear Menu Item" id_arme="16d911be-d305-4002-a5aa-4c186321c6b6" parent_id_arme="ea454127-4d42-4f59-86e0-688e70818892">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="Misc Systems/Race 3 System" />
+  </event>
+  <event name="Race 3 System" id_arme="21f1af84-4344-4ecc-9e76-409547c6871a" parent_id_arme="ea454127-4d42-4f59-86e0-688e70818892">
+    <if_gm_button text="Misc Systems/Race 3 System" />
+    <set_variable name="Sandbox Activation" value="3.0" />
+    <set_variable name="Sector" value="200.0" />
+    <set_variable name="Race 3 System" value="1.0" />
+    <set_variable name="GM Mode" value="3.0" />
+  </event>
+  <event name="Default System Side" id_arme="acb983a4-45f6-481a-b714-fc502dcbbb4a" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Race 3 System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="systemSide" value="2.0" />
+    <set_variable name="System Settings" value="2.0" />
+  </event>
+  <event name="System Side Override" id_arme="59875467-09a0-4556-a2aa-591aa2ccda44" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Race 3 System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="systemSide" value="systemSideOverride" />
+    <set_variable name="System Settings" value="2.0" />
+  </event>
+  <event name="Sector Side Override" id_arme="311efe85-c5fe-4d03-930e-503bd66730da" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Race 3 System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="sectorSide" value="sectorSideOverride" />
+    <set_variable name="System Settings" value="3.0" />
+  </event>
+  <event name="Sector Side Override (RESET)" id_arme="563b3ad4-dc7a-439c-9278-e82a7fcfe7a7" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="3.0" />
+    <set_variable name="sectorSideOverride" value="0.0" />
+    <set_variable name="System Settings" value="0.0" />
+  </event>
+  <event name="Set Sector Side" id_arme="70ff01ca-54fb-4a68-8c1e-e83299646c60" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Race 3 System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="sectorSide" value="systemSide" />
+    <set_variable name="System Settings" value="0.0" />
+  </event>
+  <folder_arme name="" id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43" parent_id_arme="317b667b-dd92-4b4e-a730-080079c54ea5" expanded_arme="" />
+  <event name="Create Race 3 Sector I" id_arme="b0067f94-aa32-4fdf-ae26-c45a60baabec" parent_id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Race 3 System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <set_skybox_index index="25" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Race 3 System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <create count="30" type="nebulas" startX="83864.0" startY="0.0" startZ="23549.0" endX="64137.0" endY="0.0" endZ="23424.0" randomRange="2503" />
+    <create count="50" type="nebulas" startX="48053.0" startY="0.0" startZ="43528.0" endX="20535.0" endY="0.0" endZ="43654.0" randomRange="3828" />
+    <create count="50" type="nebulas" startX="50063.0" startY="0.0" startZ="66900.0" endX="19655.0" endY="0.0" endZ="67151.0" randomRange="4834" />
+    <create count="60" type="asteroids" startX="76576.0" startY="0.0" startZ="56848.0" endX="67027.0" endY="0.0" endZ="60492.0" randomRange="10119" />
+    <create count="30" type="asteroids" startX="65016.0" startY="0.0" startZ="51193.0" endX="43152.0" endY="0.0" endZ="57099.0" randomRange="2588" />
+    <create count="30" type="asteroids" startX="69037.0" startY="0.0" startZ="64513.0" endX="49812.0" endY="0.0" endZ="58984.0" randomRange="2588" />
+    <create type="genericMesh" x="35000.0" y="0.0" z="55500.0" name="1-S" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="35000.0" y="0.0" z="50500.0" name="1-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="37329.0" y="0.0" z="74041.0" name="2-S" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="73014.0" y="0.0" z="57123.0" name="5-S" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="39727.0" y="0.0" z="20068.0" name="6-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="64179.0" y="0.0" z="16095.0" name="7-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="72809.0" y="0.0" z="48150.0" name="8-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="55480.0" y="0.0" z="71575.0" name="3-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="60617.0" y="0.0" z="74931.0" name="4-S" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+  </event>
+  <folder_arme name="" id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea" parent_id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43" expanded_arme="" />
+  <event name="Generate Sector Entities" id_arme="bc7ad158-0849-4f78-b0d0-5e6158d525df" parent_id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea">
+    <if_variable name="Race 3 System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="e00da0e4-4c20-4d86-9404-6991d6a2ba3e" parent_id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea">
+    <if_variable name="Race 3 System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="1dff5f1a-c0ea-46bc-8718-71390228de49" parent_id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea">
+    <if_variable name="Race 3 System" comparator="EQUALS" value="3.0" />
+    <set_variable name="Race 3 System" value="System" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+</mission_data>

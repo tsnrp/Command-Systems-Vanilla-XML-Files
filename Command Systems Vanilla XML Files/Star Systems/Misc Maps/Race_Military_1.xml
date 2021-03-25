@@ -1,0 +1,399 @@
+<mission_data version="1.7" background_id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4" playerShipNames_arme="TSN Sabre\TSN Valiant\TSN Lancer\TSN Stalker\TSN Viper\TSN Horizon\TSN Necessity\TSN Hunter">
+  <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
+    <set_variable name="Coordinate X" value="200.0" />
+    <set_variable name="Coordinate Y" value="500.0" />
+    <set_variable name="Alignment" value="0.0" />
+  </start>
+  <folder_arme name="" id_arme="317b667b-dd92-4b4e-a730-080079c54ea5" expanded_arme="" />
+  <folder_arme name="" id_arme="809a742b-921b-4da3-bc27-d95daa4290dc" parent_id_arme="317b667b-dd92-4b4e-a730-080079c54ea5" expanded_arme="" />
+  <folder_arme name="" id_arme="ea454127-4d42-4f59-86e0-688e70818892" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc" expanded_arme="" />
+  <event name="Military 1 Active" id_arme="04c648ac-1242-40fd-b2bc-0ee940ff6ece" parent_id_arme="ea454127-4d42-4f59-86e0-688e70818892">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
+    <set_gm_button text="Misc Systems/Military 1 System" />
+    <set_variable name="Military 1 Gate" value="1.0" />
+  </event>
+  <event name="Clear Menu Item" id_arme="16d911be-d305-4002-a5aa-4c186321c6b6" parent_id_arme="ea454127-4d42-4f59-86e0-688e70818892">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="Misc Systems/Military 1 System" />
+  </event>
+  <event name="Military 1 System" id_arme="21f1af84-4344-4ecc-9e76-409547c6871a" parent_id_arme="ea454127-4d42-4f59-86e0-688e70818892">
+    <if_gm_button text="Misc Systems/Military 1 System" />
+    <set_variable name="Sandbox Activation" value="3.0" />
+    <set_variable name="Sector" value="200.0" />
+    <set_variable name="Military 1 System" value="1.0" />
+    <set_variable name="GM Mode" value="3.0" />
+  </event>
+  <event name="Default System Side" id_arme="acb983a4-45f6-481a-b714-fc502dcbbb4a" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Military 1 System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="systemSide" value="2.0" />
+    <set_variable name="System Settings" value="2.0" />
+  </event>
+  <event name="System Side Override" id_arme="59875467-09a0-4556-a2aa-591aa2ccda44" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Military 1 System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="systemSide" value="systemSideOverride" />
+    <set_variable name="System Settings" value="2.0" />
+  </event>
+  <event name="Sector Side Override" id_arme="311efe85-c5fe-4d03-930e-503bd66730da" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Military 1 System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="sectorSide" value="sectorSideOverride" />
+    <set_variable name="System Settings" value="3.0" />
+  </event>
+  <event name="Sector Side Override (RESET)" id_arme="563b3ad4-dc7a-439c-9278-e82a7fcfe7a7" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="3.0" />
+    <set_variable name="sectorSideOverride" value="0.0" />
+    <set_variable name="System Settings" value="0.0" />
+  </event>
+  <event name="Set Sector Side" id_arme="70ff01ca-54fb-4a68-8c1e-e83299646c60" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Military 1 System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="sectorSide" value="systemSide" />
+    <set_variable name="System Settings" value="0.0" />
+  </event>
+  <folder_arme name="" id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43" parent_id_arme="317b667b-dd92-4b4e-a730-080079c54ea5" expanded_arme="" />
+  <event name="Create Military 1 Sector I" id_arme="b0067f94-aa32-4fdf-ae26-c45a60baabec" parent_id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Military 1 System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <set_skybox_index index="25" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Military 1 System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <create count="50" type="mines" startX="99950.0" startY="0.0" startZ="99950.0" endX="50.0" endY="0.0" endZ="99950.0" />
+    <create count="50" type="mines" startX="99950.0" startY="0.0" startZ="50.0" endX="50.0" endY="0.0" endZ="50.0" />
+    <create count="50" type="mines" startX="50.0" startY="0.0" startZ="50.0" endX="50.0" endY="0.0" endZ="99950.0" />
+    <create count="50" type="mines" startX="99950.0" startY="0.0" startZ="99950.0" endX="99950.0" endY="0.0" endZ="50.0" />
+    <create count="60" type="mines" startX="86070.0" startY="0.0" startZ="82323.0" endX="85971.0" endY="0.0" endZ="17926.0" />
+    <create count="50" type="mines" startX="69834.0" startY="0.0" startZ="85120.0" endX="28418.0" endY="0.0" endZ="85120.0" />
+    <create count="60" type="mines" startX="84821.0" startY="0.0" startZ="64088.0" endX="13731.0" endY="0.0" endZ="64288.0" />
+    <create count="80" type="mines" startX="15080.0" startY="0.0" startZ="81523.0" endX="8235.0" endY="0.0" endZ="10682.0" />
+    <create count="10" type="mines" startX="65000.0" startY="0.0" startZ="70133.0" endX="65000.0" endY="0.0" endZ="64088.0" />
+    <create count="10" type="mines" startX="35000.0" startY="0.0" startZ="70133.0" endX="35000.0" endY="0.0" endZ="64238.0" />
+    <create count="10" type="mines" startX="40000.0" startY="0.0" startZ="70133.0" endX="40000.0" endY="0.0" endZ="64238.0" />
+    <create count="10" type="mines" startX="45000.0" startY="0.0" startZ="70133.0" endX="45000.0" endY="0.0" endZ="64238.0" />
+    <create count="10" type="mines" startX="50000.0" startY="0.0" startZ="70133.0" endX="50000.0" endY="0.0" endZ="64238.0" />
+    <create count="10" type="mines" startX="55000.0" startY="0.0" startZ="70133.0" endX="55000.0" endY="0.0" endZ="64238.0" />
+    <create count="10" type="mines" startX="60000.0" startY="0.0" startZ="70133.0" endX="60000.0" endY="0.0" endZ="64238.0" />
+    <create count="50" type="mines" startX="19476.0" startY="0.0" startZ="741.0" endX="24172.0" endY="0.0" endZ="55495.0" />
+    <create count="50" type="mines" startX="24622.0" startY="0.0" startZ="55845.0" endX="75130.0" endY="0.0" endZ="55095.0" />
+    <create count="30" type="mines" startX="84672.0" startY="0.0" startZ="42206.0" endX="61641.0" endY="0.0" endZ="24071.0" />
+    <create count="30" type="mines" startX="75679.0" startY="0.0" startZ="54396.0" endX="55196.0" endY="0.0" endZ="32414.0" />
+    <create count="25" type="mines" startX="61741.0" startY="0.0" startZ="23272.0" endX="82973.0" endY="0.0" endZ="15228.0" />
+    <create count="20" type="mines" startX="45404.0" startY="0.0" startZ="23621.0" endX="33914.0" endY="0.0" endZ="11182.0" />
+    <create count="20" type="mines" startX="43856.0" startY="0.0" startZ="45004.0" endX="45105.0" endY="0.0" endZ="24271.0" />
+    <create count="30" type="mines" startX="43156.0" startY="0.0" startZ="45004.0" endX="31666.0" endY="0.0" endZ="12830.0" />
+    <create count="20" type="mines" startX="51799.0" startY="0.0" startZ="15678.0" endX="38860.0" endY="0.0" endZ="241.0" />
+    <create count="30" type="mines" startX="52349.0" startY="0.0" startZ="15578.0" endX="79026.0" endY="0.0" endZ="541.0" />
+    <create count="10" type="mines" startX="54547.0" startY="0.0" startZ="32014.0" radius="500" />
+    <create count="10" type="mines" startX="43756.0" startY="0.0" startZ="45903.0" radius="500" />
+    <create count="10" type="mines" startX="61141.0" startY="0.0" startZ="23621.0" radius="500" />
+    <create count="10" type="mines" startX="51899.0" startY="0.0" startZ="15928.0" radius="500" />
+    <create count="10" type="mines" startX="45304.0" startY="0.0" startZ="24071.0" radius="500" />
+    <create count="10" type="mines" startX="24172.0" startY="0.0" startZ="55795.0" radius="500" />
+    <create count="10" type="mines" startX="75479.0" startY="0.0" startZ="54746.0" radius="500" />
+    <create count="10" type="mines" startX="70084.0" startY="0.0" startZ="85170.0" radius="500" />
+    <create count="10" type="mines" startX="27919.0" startY="0.0" startZ="85070.0" radius="500" />
+    <create count="6" type="nebulas" startX="52299.0" startY="0.0" startZ="15728.0" endX="53398.0" endY="0.0" endZ="31765.0" />
+    <create count="6" type="nebulas" startX="60092.0" startY="0.0" startZ="23721.0" endX="45954.0" endY="0.0" endZ="23971.0" />
+    <create count="3" type="nebulas" startX="3389.0" startY="0.0" startZ="48351.0" endX="2290.0" endY="0.0" endZ="43955.0" />
+    <create count="3" type="nebulas" startX="6787.0" startY="0.0" startZ="58343.0" endX="11333.0" endY="0.0" endZ="61490.0" />
+    <create count="3" type="nebulas" startX="5887.0" startY="0.0" startZ="31065.0" endX="3339.0" endY="0.0" endZ="27119.0" />
+    <create count="6" type="nebulas" startX="21424.0" startY="0.0" startZ="11282.0" radius="3000" randomRange="1500" />
+    <create count="7" type="nebulas" startX="88568.0" startY="0.0" startZ="39059.0" endX="97811.0" endY="0.0" endZ="28567.0" />
+    <create count="7" type="nebulas" startX="98060.0" startY="0.0" startZ="63788.0" endX="87569.0" endY="0.0" endZ="46602.0" />
+    <create count="10" type="mines" startX="50000.0" startY="0.0" startZ="85470.0" endX="50000.0" endY="0.0" endZ="89816.0" />
+    <create count="10" type="mines" startX="50000.0" startY="0.0" startZ="99608.0" endX="50000.0" endY="0.0" endZ="95512.0" />
+    <create count="1" type="nebulas" startX="67536.0" startY="0.0" startZ="71631.0" endX="67536.0" endY="0.0" endZ="71631.0" />
+    <create count="1" type="nebulas" startX="63739.0" startY="0.0" startZ="71831.0" endX="63739.0" endY="0.0" endZ="71831.0" />
+    <create count="1" type="nebulas" startX="59842.0" startY="0.0" startZ="71981.0" endX="59842.0" endY="0.0" endZ="71981.0" />
+    <create count="1" type="nebulas" startX="56095.0" startY="0.0" startZ="72131.0" endX="56095.0" endY="0.0" endZ="72131.0" />
+    <create count="1" type="nebulas" startX="52498.0" startY="0.0" startZ="72281.0" endX="52498.0" endY="0.0" endZ="72281.0" />
+    <create count="1" type="nebulas" startX="48951.0" startY="0.0" startZ="72381.0" endX="48951.0" endY="0.0" endZ="72381.0" />
+    <create count="1" type="nebulas" startX="45754.0" startY="0.0" startZ="72381.0" endX="45754.0" endY="0.0" endZ="72381.0" />
+    <create count="1" type="nebulas" startX="41857.0" startY="0.0" startZ="72381.0" endX="41857.0" endY="0.0" endZ="72381.0" />
+    <create count="1" type="nebulas" startX="38410.0" startY="0.0" startZ="72281.0" endX="38410.0" endY="0.0" endZ="72281.0" />
+    <create count="1" type="nebulas" startX="35213.0" startY="0.0" startZ="72331.0" endX="35213.0" endY="0.0" endZ="72331.0" />
+    <create count="1" type="nebulas" startX="62440.0" startY="0.0" startZ="69683.0" endX="62440.0" endY="0.0" endZ="69683.0" />
+    <create count="1" type="nebulas" startX="57344.0" startY="0.0" startZ="69583.0" endX="57344.0" endY="0.0" endZ="69583.0" />
+    <create count="1" type="nebulas" startX="52598.0" startY="0.0" startZ="69583.0" endX="52598.0" endY="0.0" endZ="69583.0" />
+    <create count="1" type="nebulas" startX="47453.0" startY="0.0" startZ="69533.0" endX="47453.0" endY="0.0" endZ="69533.0" />
+    <create count="1" type="nebulas" startX="42257.0" startY="0.0" startZ="69583.0" endX="42257.0" endY="0.0" endZ="69583.0" />
+    <create count="1" type="nebulas" startX="37261.0" startY="0.0" startZ="69633.0" endX="37261.0" endY="0.0" endZ="69633.0" />
+    <create count="1" type="nebulas" startX="69984.0" startY="0.0" startZ="74579.0" endX="69984.0" endY="0.0" endZ="74579.0" />
+    <create count="1" type="nebulas" startX="65987.0" startY="0.0" startZ="74579.0" endX="65987.0" endY="0.0" endZ="74579.0" />
+    <create count="1" type="nebulas" startX="62090.0" startY="0.0" startZ="74879.0" endX="62090.0" endY="0.0" endZ="74879.0" />
+    <create count="1" type="nebulas" startX="58194.0" startY="0.0" startZ="75029.0" endX="58194.0" endY="0.0" endZ="75029.0" />
+    <create count="1" type="nebulas" startX="54497.0" startY="0.0" startZ="74879.0" endX="54497.0" endY="0.0" endZ="74879.0" />
+    <create count="1" type="nebulas" startX="50850.0" startY="0.0" startZ="75328.0" endX="50850.0" endY="0.0" endZ="75328.0" />
+    <create count="1" type="nebulas" startX="47503.0" startY="0.0" startZ="75628.0" endX="47503.0" endY="0.0" endZ="75628.0" />
+    <create count="1" type="nebulas" startX="44005.0" startY="0.0" startZ="75578.0" endX="44005.0" endY="0.0" endZ="75578.0" />
+    <create count="1" type="nebulas" startX="40259.0" startY="0.0" startZ="75728.0" endX="40259.0" endY="0.0" endZ="75728.0" />
+    <create count="1" type="nebulas" startX="36512.0" startY="0.0" startZ="75678.0" endX="36512.0" endY="0.0" endZ="75678.0" />
+    <create count="1" type="nebulas" startX="32815.0" startY="0.0" startZ="75678.0" endX="32815.0" endY="0.0" endZ="75678.0" />
+    <create type="blackHole" x="15000.0" y="0.0" z="85000.0" />
+    <create type="blackHole" x="8000.0" y="0.0" z="8000.0" />
+    <create type="blackHole" x="85000.0" y="0.0" z="15000.0" />
+    <create type="blackHole" x="85000.0" y="0.0" z="85000.0" />
+    <create type="station" x="62500.0" y="0.0" z="66000.0" name="Pit 1" hullID="1000" sideValue="2" />
+    <create type="station" x="52500.0" y="0.0" z="66000.0" name="Pit 3" hullID="1000" sideValue="2" />
+    <create type="station" x="42500.0" y="0.0" z="66000.0" name="Pit 5" hullID="1000" sideValue="2" />
+    <create type="station" x="57500.0" y="0.0" z="66000.0" name="Pit 2" hullID="1000" sideValue="2" />
+    <create type="station" x="47500.0" y="0.0" z="66000.0" name="Pit 4" hullID="1000" sideValue="2" />
+    <create type="station" x="37500.0" y="0.0" z="66000.0" name="Pit 6" hullID="1000" sideValue="2" />
+    <create type="blackHole" x="32365.0" y="0.0" z="11232.0" />
+    <create type="player" x="60000.0" y="0.0" z="92000.0" angle="90" />
+    <create type="player" x="60000.0" y="0.0" z="93000.0" angle="90" />
+    <create type="player" x="60000.0" y="0.0" z="94000.0" angle="90" />
+    <create type="player" x="60000.0" y="0.0" z="95000.0" angle="90" />
+    <create type="player" x="60500.0" y="0.0" z="91500.0" angle="90" />
+    <create type="player" x="60500.0" y="0.0" z="92500.0" angle="90" />
+    <create type="player" x="60500.0" y="0.0" z="93500.0" angle="90" />
+    <create type="player" x="60500.0" y="0.0" z="94500.0" angle="90" />
+  </event>
+  <folder_arme name="" id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea" parent_id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43" expanded_arme="" />
+  <event name="Generate Sector Entities" id_arme="bc7ad158-0849-4f78-b0d0-5e6158d525df" parent_id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea">
+    <if_variable name="Military 1 System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="2.0" />
+    <create type="enemy" x="8770.0" y="0.0" z="73605.0" angle="0" name="A-01" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="1135.0" y="0.0" z="73881.0" angle="0" name="A-07" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="2005.0" y="0.0" z="72460.0" angle="0" name="A-06" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="3340.0" y="0.0" z="73734.0" angle="0" name="A-05" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="4548.0" y="0.0" z="72582.0" angle="0" name="A-04" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="5922.0" y="0.0" z="73641.0" angle="0" name="A-03" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="7409.0" y="0.0" z="72396.0" angle="0" name="A-02" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="1000.0" y="0.0" z="13000.0" angle="180" name="B-01" hullID="5001" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="7000.0" y="0.0" z="13000.0" angle="180" name="B-05" hullID="5001" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="5500.0" y="0.0" z="13000.0" angle="180" name="B-04" hullID="5001" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="4000.0" y="0.0" z="13000.0" angle="180" name="B-03" hullID="5001" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="2500.0" y="0.0" z="13000.0" angle="180" name="B-02" hullID="5001" sideValue="1" fleetnumber="2" />
+  </event>
+  <event name="Settings" id_arme="e00da0e4-4c20-4d86-9404-6991d6a2ba3e" parent_id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea">
+    <if_variable name="Military 1 System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_variable name="Sector Entities" value="3.0" />
+    <set_variable name="Fleet1State" value="2.0" />
+    <set_variable name="Fleet1Respawns" value="1.0" />
+    <set_object_property property="topSpeed" value="0.0" name="A-01" />
+    <set_object_property property="topSpeed" value="0.0" name="A-02" />
+    <set_object_property property="topSpeed" value="0.0" name="A-03" />
+    <set_object_property property="topSpeed" value="0.0" name="A-04" />
+    <set_object_property property="topSpeed" value="0.0" name="A-05" />
+    <set_object_property property="topSpeed" value="0.0" name="A-06" />
+    <set_object_property property="topSpeed" value="0.0" name="A-07" />
+    <clear_ai name="A-01" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-01" />
+    <add_ai type="CHASE_ANGER" name="A-01" />
+    <clear_ai name="A-02" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-02" />
+    <add_ai type="CHASE_ANGER" name="A-02" />
+    <clear_ai name="A-03" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-03" />
+    <add_ai type="CHASE_ANGER" name="A-03" />
+    <clear_ai name="A-04" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-04" />
+    <add_ai type="CHASE_ANGER" name="A-04" />
+    <clear_ai name="A-05" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-05" />
+    <add_ai type="CHASE_ANGER" name="A-05" />
+    <clear_ai name="A-06" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-06" />
+    <add_ai type="CHASE_ANGER" name="A-06" />
+    <clear_ai name="A-07" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-07" />
+    <add_ai type="CHASE_ANGER" name="A-07" />
+    <set_variable name="Fleet2State" value="2.0" />
+    <set_variable name="Fleet2Respawns" value="0.0" />
+    <clear_ai name="B-01" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="B-01" />
+    <add_ai type="CHASE_ANGER" name="B-01" />
+    <clear_ai name="B-02" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="B-02" />
+    <add_ai type="CHASE_ANGER" name="B-02" />
+    <clear_ai name="B-03" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="B-03" />
+    <add_ai type="CHASE_ANGER" name="B-03" />
+    <clear_ai name="B-04" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="B-04" />
+    <add_ai type="CHASE_ANGER" name="B-04" />
+    <clear_ai name="B-05" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="B-05" />
+    <add_ai type="CHASE_ANGER" name="B-05" />
+    <set_object_property property="topSpeed" value="0.0" name="B-01" />
+    <set_object_property property="topSpeed" value="0.0" name="B-02" />
+    <set_object_property property="topSpeed" value="0.0" name="B-05" />
+    <set_object_property property="topSpeed" value="0.0" name="B-04" />
+    <set_object_property property="topSpeed" value="0.0" name="B-03" />
+    <set_timer name="Fleet2timer" seconds="10" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="1dff5f1a-c0ea-46bc-8718-71390228de49" parent_id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea">
+    <if_variable name="Military 1 System" comparator="EQUALS" value="3.0" />
+    <set_variable name="Military 1 System" value="System" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+  <folder_arme name="" id_arme="43bc19a8-ca72-4a20-a1b6-4f2ac7fb109b" parent_id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43" expanded_arme="" />
+  <folder_arme name="" id_arme="1774741d-fd29-41b1-8ee5-e17a854189a1" parent_id_arme="43bc19a8-ca72-4a20-a1b6-4f2ac7fb109b" expanded_arme="" />
+  <event name="Init" id_arme="5b101d9e-b793-42c2-aba0-ebb289c366e0" parent_id_arme="1774741d-fd29-41b1-8ee5-e17a854189a1">
+    <if_variable name="Fleet1Respawns" comparator="EQUALS" value="1.0" />
+    <if_variable name="Fleet1State" comparator="EQUALS" value="1.0" />
+    <set_variable name="Fleet1State" value="2.0" />
+    <create type="enemy" x="8770.0" y="0.0" z="73605.0" angle="0" name="A-01" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="7409.0" y="0.0" z="72396.0" angle="0" name="A-02" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="5922.0" y="0.0" z="73641.0" angle="0" name="A-03" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="4548.0" y="0.0" z="72582.0" angle="0" name="A-04" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="3340.0" y="0.0" z="73734.0" angle="0" name="A-05" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="2005.0" y="0.0" z="72460.0" angle="0" name="A-06" hullID="2000" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="1135.0" y="0.0" z="73881.0" angle="0" name="A-07" hullID="2000" sideValue="1" fleetnumber="1" />
+    <set_object_property property="topSpeed" value="0.0" name="A-01" />
+    <set_object_property property="topSpeed" value="0.0" name="A-02" />
+    <set_object_property property="topSpeed" value="0.0" name="A-03" />
+    <set_object_property property="topSpeed" value="0.0" name="A-04" />
+    <set_object_property property="topSpeed" value="0.0" name="A-05" />
+    <set_object_property property="topSpeed" value="0.0" name="A-06" />
+    <set_object_property property="topSpeed" value="0.0" name="A-07" />
+    <clear_ai name="A-01" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-01" />
+    <add_ai type="CHASE_ANGER" name="A-01" />
+    <clear_ai name="A-02" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-02" />
+    <add_ai type="CHASE_ANGER" name="A-02" />
+    <clear_ai name="A-03" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-03" />
+    <add_ai type="CHASE_ANGER" name="A-03" />
+    <clear_ai name="A-04" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-04" />
+    <add_ai type="CHASE_ANGER" name="A-04" />
+    <clear_ai name="A-05" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-05" />
+    <add_ai type="CHASE_ANGER" name="A-05" />
+    <clear_ai name="A-06" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-06" />
+    <add_ai type="CHASE_ANGER" name="A-06" />
+    <clear_ai name="A-07" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="A-07" />
+    <add_ai type="CHASE_ANGER" name="A-07" />
+  </event>
+  <event name="RespawnDetect" id_arme="e121712b-cdac-43f0-98c6-daba0b261dc7" parent_id_arme="1774741d-fd29-41b1-8ee5-e17a854189a1">
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="1" />
+    <if_variable name="Fleet1State" comparator="EQUALS" value="2.0" />
+    <set_variable name="Fleet1State" value="3.0" />
+    <set_timer name="Fleet1RespawnTimer" seconds="25" />
+  </event>
+  <event name="RespawnTime" id_arme="0d9a083e-b729-4953-b4ea-3785ac0f8332" parent_id_arme="1774741d-fd29-41b1-8ee5-e17a854189a1">
+    <if_variable name="Fleet1State" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Fleet1RespawnTimer" />
+    <set_variable name="Fleet1State" value="1.0" />
+  </event>
+  <event name="Example AI stack" id_arme="3bea98f3-2811-4195-a5e7-d139822775d5" parent_id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43">
+    <if_variable name="TEST" comparator="EQUALS" value="1.0" />
+    <set_variable name="Fleet1State" value="2.0" />
+    <clear_ai name="A-02" />
+    <add_ai type="POINT_THROTTLE" value4="0.0" name="A-01" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A-03" />
+    <add_ai type="CHASE_ANGER" name="A-04" />
+    <set_object_property property="throttle" value="0.0" name="A-05" />
+    <set_object_property property="throttle" value="0.0" name="A-06" />
+    <set_object_property property="throttle" value="0.0" name="A-07" />
+  </event>
+  <folder_arme name="Obstacle 2" id_arme="9f707bd3-7614-4352-b2bd-a1e2ca054b60" parent_id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43" expanded_arme="" />
+  <folder_arme name="Obstacle 3" id_arme="bc09a10a-1a75-47d6-a5b4-88e5508f9727" parent_id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43" expanded_arme="" />
+  <event name="02 set 180" id_arme="7556aa93-8055-4490-9a6e-082d292ab9a8" parent_id_arme="bc09a10a-1a75-47d6-a5b4-88e5508f9727">
+    <if_variable name="Fleet2State" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="Fleet2timer" />
+    <set_timer name="Fleet2timer" seconds="10" />
+    <set_variable name="Fleet2State" value="3.0" />
+    <clear_ai name="B-01" />
+    <clear_ai name="B-02" />
+    <clear_ai name="B-03" />
+    <clear_ai name="B-04" />
+    <clear_ai name="B-05" />
+    <set_object_property property="topSpeed" value="0.0" name="B-01" />
+    <set_object_property property="topSpeed" value="0.0" name="B-02" />
+    <set_object_property property="topSpeed" value="0.0" name="B-03" />
+    <set_object_property property="topSpeed" value="0.0" name="B-04" />
+    <set_object_property property="topSpeed" value="0.0" name="B-05" />
+    <add_ai type="DIR_THROTTLE" value1="180" value2="1.0" name="B-01" />
+    <add_ai type="DIR_THROTTLE" value1="180" value2="1.0" name="B-02" />
+    <add_ai type="DIR_THROTTLE" value1="180" value2="1.0" name="B-03" />
+    <add_ai type="DIR_THROTTLE" value1="180" value2="1.0" name="B-04" />
+    <add_ai type="DIR_THROTTLE" value1="180" value2="1.0" name="B-05" />
+    <add_ai type="CHASE_PLAYER" value1="1200" value2="1200" name="B-01" />
+    <add_ai type="CHASE_PLAYER" value1="1200" value2="1200" name="B-02" />
+    <add_ai type="CHASE_PLAYER" value1="1200" value2="1200" name="B-03" />
+    <add_ai type="CHASE_PLAYER" value1="1200" value2="1200" name="B-04" />
+    <add_ai type="CHASE_PLAYER" value1="1200" value2="1200" name="B-05" />
+    <add_ai type="CHASE_ANGER" name="B-01" />
+    <add_ai type="CHASE_ANGER" name="B-02" />
+    <add_ai type="CHASE_ANGER" name="B-03" />
+    <add_ai type="CHASE_ANGER" name="B-04" />
+    <add_ai type="CHASE_ANGER" name="B-05" />
+  </event>
+  <event name="03 move 180" id_arme="c32c7260-c0f0-48f7-8b15-590ac1bd1d24" parent_id_arme="bc09a10a-1a75-47d6-a5b4-88e5508f9727">
+    <if_timer_finished name="Fleet2timer" />
+    <if_variable name="Fleet2State" comparator="EQUALS" value="3.0" />
+    <set_object_property property="topSpeed" value="100.0" name="B-01" />
+    <set_object_property property="topSpeed" value="100.0" name="B-02" />
+    <set_object_property property="topSpeed" value="100.0" name="B-03" />
+    <set_object_property property="topSpeed" value="100.0" name="B-04" />
+    <set_object_property property="topSpeed" value="100.0" name="B-05" />
+    <set_timer name="Fleet2timer" seconds="30" />
+    <set_variable name="Fleet2State" value="4.0" />
+  </event>
+  <event name="04 set 360" id_arme="8396ac21-fe5a-4491-8f13-40d81f1c1492" parent_id_arme="bc09a10a-1a75-47d6-a5b4-88e5508f9727">
+    <if_variable name="Fleet2State" comparator="EQUALS" value="4.0" />
+    <set_timer name="Fleet2timer" seconds="10" />
+    <set_variable name="Fleet2State" value="5.0" />
+    <clear_ai name="B-01" />
+    <clear_ai name="B-02" />
+    <clear_ai name="B-03" />
+    <clear_ai name="B-04" />
+    <clear_ai name="B-05" />
+    <set_object_property property="topSpeed" value="0.0" name="B-01" />
+    <set_object_property property="topSpeed" value="0.0" name="B-02" />
+    <set_object_property property="topSpeed" value="0.0" name="B-03" />
+    <set_object_property property="topSpeed" value="0.0" name="B-04" />
+    <set_object_property property="topSpeed" value="0.0" name="B-05" />
+    <add_ai type="DIR_THROTTLE" value1="360" value2="1.0" name="B-01" />
+    <add_ai type="DIR_THROTTLE" value1="360" value2="1.0" name="B-02" />
+    <add_ai type="DIR_THROTTLE" value1="360" value2="1.0" name="B-03" />
+    <add_ai type="DIR_THROTTLE" value1="360" value2="1.0" name="B-04" />
+    <add_ai type="DIR_THROTTLE" value1="0" value2="1.0" name="B-05" />
+    <add_ai type="CHASE_PLAYER" value1="1200" value2="1200" name="B-01" />
+    <add_ai type="CHASE_PLAYER" value1="1200" value2="1200" name="B-02" />
+    <add_ai type="CHASE_PLAYER" value1="1200" value2="1200" name="B-03" />
+    <add_ai type="CHASE_PLAYER" value1="1200" value2="1200" name="B-04" />
+    <add_ai type="CHASE_PLAYER" value1="1200" value2="1200" name="B-05" />
+    <add_ai type="CHASE_ANGER" name="B-01" />
+    <add_ai type="CHASE_ANGER" name="B-02" />
+    <add_ai type="CHASE_ANGER" name="B-03" />
+    <add_ai type="CHASE_ANGER" name="B-04" />
+    <add_ai type="CHASE_ANGER" name="B-05" />
+  </event>
+  <event name="05 move 180" id_arme="7ce26cac-a4f6-4d6c-9d1c-b364cfb0c0f2" parent_id_arme="bc09a10a-1a75-47d6-a5b4-88e5508f9727">
+    <if_timer_finished name="Fleet2timer" />
+    <if_variable name="Fleet2State" comparator="EQUALS" value="5.0" />
+    <set_object_property property="topSpeed" value="100.0" name="B-01" />
+    <set_object_property property="topSpeed" value="100.0" name="B-02" />
+    <set_object_property property="topSpeed" value="100.0" name="B-03" />
+    <set_object_property property="topSpeed" value="100.0" name="B-04" />
+    <set_object_property property="topSpeed" value="100.0" name="B-05" />
+    <set_timer name="Fleet2timer" seconds="30" />
+    <set_variable name="Fleet2State" value="2.0" />
+  </event>
+</mission_data>
