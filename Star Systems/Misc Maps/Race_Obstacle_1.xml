@@ -1,0 +1,297 @@
+<mission_data version="1.7" background_id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4" playerShipNames_arme="TSN Sabre\TSN Valiant\TSN Lancer\TSN Stalker\TSN Viper\TSN Horizon\TSN Necessity\TSN Hunter">
+  <start name="Start" id_arme="8bf1c774-cd5c-41e1-b463-2a543cc7fbd4">
+    <set_variable name="Coordinate X" value="300.0" />
+    <set_variable name="Coordinate Y" value="200.0" />
+    <set_variable name="Alignment" value="0.0" />
+  </start>
+  <folder_arme name="" id_arme="317b667b-dd92-4b4e-a730-080079c54ea5" expanded_arme="" />
+  <folder_arme name="" id_arme="809a742b-921b-4da3-bc27-d95daa4290dc" parent_id_arme="317b667b-dd92-4b4e-a730-080079c54ea5" expanded_arme="" />
+  <folder_arme name="" id_arme="ea454127-4d42-4f59-86e0-688e70818892" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc" expanded_arme="" />
+  <event name="Race 4 Active" id_arme="04c648ac-1242-40fd-b2bc-0ee940ff6ece" parent_id_arme="ea454127-4d42-4f59-86e0-688e70818892">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="1.0" />
+    <set_gm_button text="Misc Systems/Obstacle Race 1" />
+    <set_variable name="Race 4 Gate" value="1.0" />
+  </event>
+  <event name="Clear Menu Item" id_arme="16d911be-d305-4002-a5aa-4c186321c6b6" parent_id_arme="ea454127-4d42-4f59-86e0-688e70818892">
+    <if_variable name="Activation Menu" comparator="EQUALS" value="0.0" />
+    <clear_gm_button text="Misc Systems/Obstacle Race 1" />
+  </event>
+  <event name="Race 4 System" id_arme="21f1af84-4344-4ecc-9e76-409547c6871a" parent_id_arme="ea454127-4d42-4f59-86e0-688e70818892">
+    <if_gm_button text="Misc Systems/Obstacle Race 1" />
+    <set_variable name="Sandbox Activation" value="3.0" />
+    <set_variable name="Sector" value="200.0" />
+    <set_variable name="Race 4 System" value="1.0" />
+    <set_variable name="GM Mode" value="3.0" />
+  </event>
+  <event name="Default System Side" id_arme="acb983a4-45f6-481a-b714-fc502dcbbb4a" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Race 4 System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="systemSide" value="2.0" />
+    <set_variable name="System Settings" value="2.0" />
+  </event>
+  <event name="System Side Override" id_arme="59875467-09a0-4556-a2aa-591aa2ccda44" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="1.0" />
+    <if_variable name="Race 4 System" comparator="EQUALS" value="System" />
+    <if_variable name="systemSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="systemSide" value="systemSideOverride" />
+    <set_variable name="System Settings" value="2.0" />
+  </event>
+  <event name="Sector Side Override" id_arme="311efe85-c5fe-4d03-930e-503bd66730da" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Race 4 System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="GREATER_EQUAL" value="1.0" />
+    <set_variable name="sectorSide" value="sectorSideOverride" />
+    <set_variable name="System Settings" value="3.0" />
+  </event>
+  <event name="Sector Side Override (RESET)" id_arme="563b3ad4-dc7a-439c-9278-e82a7fcfe7a7" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="3.0" />
+    <set_variable name="sectorSideOverride" value="0.0" />
+    <set_variable name="System Settings" value="0.0" />
+  </event>
+  <event name="Set Sector Side" id_arme="70ff01ca-54fb-4a68-8c1e-e83299646c60" parent_id_arme="809a742b-921b-4da3-bc27-d95daa4290dc">
+    <if_variable name="System Settings" comparator="EQUALS" value="2.0" />
+    <if_variable name="Race 4 System" comparator="EQUALS" value="System" />
+    <if_variable name="sectorSideOverride" comparator="LESS" value="1.0" />
+    <set_variable name="sectorSide" value="systemSide" />
+    <set_variable name="System Settings" value="0.0" />
+  </event>
+  <folder_arme name="" id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43" parent_id_arme="317b667b-dd92-4b4e-a730-080079c54ea5" expanded_arme="" />
+  <event name="Create Race 4 Sector I" id_arme="5a986aef-0f13-4262-a8b2-dbd282f44af4" parent_id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Race 4 System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <set_skybox_index index="25" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Race 4 System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <create count="10" type="nebulas" startAngle="250" endAngle="360" startX="34214.0" startY="0.0" startZ="32814.0" radius="19000" randomRange="1000" />
+    <create count="10" type="nebulas" startAngle="270" endAngle="390" startX="30966.0" startY="0.0" startZ="35611.0" radius="19000" randomRange="1000" />
+    <create count="10" type="nebulas" startAngle="300" endAngle="440" startX="27070.0" startY="0.0" startZ="38709.0" radius="19000" randomRange="1000" />
+    <create count="10" type="nebulas" startX="17078.0" startY="0.0" startZ="13280.0" endX="34713.0" endY="0.0" endZ="13330.0" randomRange="5000" randomSeed="1" />
+    <create count="10" type="nebulas" startX="17378.0" startY="0.0" startZ="14379.0" endX="1591.0" endY="0.0" endZ="32414.0" randomRange="4000" randomSeed="21" />
+    <create count="10" type="nebulas" startX="1041.0" startY="0.0" startZ="22822.0" endX="29767.0" endY="0.0" endZ="13830.0" randomRange="5000" randomSeed="1" />
+    <create count="1" type="nebulas" startX="15180.0" startY="0.0" startZ="16228.0" endX="15180.0" endY="0.0" endZ="16228.0" />
+    <create count="1" type="nebulas" startX="18277.0" startY="0.0" startZ="18426.0" endX="18277.0" endY="0.0" endZ="18426.0" />
+    <create count="1" type="nebulas" startX="11632.0" startY="0.0" startZ="17926.0" endX="11632.0" endY="0.0" endZ="17926.0" />
+    <create count="1" type="nebulas" startX="8085.0" startY="0.0" startZ="15528.0" endX="8085.0" endY="0.0" endZ="15528.0" />
+    <create count="1" type="nebulas" startX="2440.0" startY="0.0" startZ="21024.0" endX="2440.0" endY="0.0" endZ="21024.0" />
+    <create count="1" type="nebulas" startX="292.0" startY="0.0" startZ="24221.0" endX="292.0" endY="0.0" endZ="24221.0" />
+    <create count="1" type="nebulas" startX="1691.0" startY="0.0" startZ="31865.0" endX="1691.0" endY="0.0" endZ="31865.0" />
+    <create count="1" type="nebulas" startX="5488.0" startY="0.0" startZ="31365.0" endX="5488.0" endY="0.0" endZ="31365.0" />
+    <create count="1" type="nebulas" startX="4239.0" startY="0.0" startZ="28717.0" endX="4239.0" endY="0.0" endZ="28717.0" />
+    <create count="1" type="nebulas" startX="7936.0" startY="0.0" startZ="25120.0" endX="7936.0" endY="0.0" endZ="25120.0" />
+    <create count="1" type="nebulas" startX="13031.0" startY="0.0" startZ="23921.0" endX="13031.0" endY="0.0" endZ="23921.0" />
+    <create count="1" type="nebulas" startX="24322.0" startY="0.0" startZ="13480.0" endX="24322.0" endY="0.0" endZ="13480.0" />
+    <create count="1" type="nebulas" startX="6387.0" startY="0.0" startZ="36211.0" endX="6387.0" endY="0.0" endZ="36211.0" />
+    <create count="1" type="nebulas" startX="3789.0" startY="0.0" startZ="39258.0" endX="3789.0" endY="0.0" endZ="39258.0" />
+    <create count="1" type="nebulas" startX="1341.0" startY="0.0" startZ="41656.0" endX="1341.0" endY="0.0" endZ="41656.0" />
+    <create count="1" type="nebulas" startX="2090.0" startY="0.0" startZ="36761.0" endX="2090.0" endY="0.0" endZ="36761.0" />
+    <create count="1" type="nebulas" startX="1141.0" startY="0.0" startZ="34562.0" endX="1141.0" endY="0.0" endZ="34562.0" />
+    <create count="1" type="nebulas" startX="1291.0" startY="0.0" startZ="38909.0" endX="1291.0" endY="0.0" endZ="38909.0" />
+    <create count="1" type="nebulas" startX="3339.0" startY="0.0" startZ="42805.0" endX="3339.0" endY="0.0" endZ="42805.0" />
+    <create count="1" type="nebulas" startX="1791.0" startY="0.0" startZ="46752.0" endX="1791.0" endY="0.0" endZ="46752.0" />
+    <create count="1" type="nebulas" startX="1191.0" startY="0.0" startZ="44104.0" endX="1191.0" endY="0.0" endZ="44104.0" />
+    <create count="1" type="nebulas" startX="45254.0" startY="0.0" startZ="27169.0" endX="45254.0" endY="0.0" endZ="27169.0" />
+    <create count="1" type="nebulas" startX="46953.0" startY="0.0" startZ="21273.0" endX="46953.0" endY="0.0" endZ="21273.0" />
+    <create count="1" type="nebulas" startX="32765.0" startY="0.0" startZ="14129.0" endX="32765.0" endY="0.0" endZ="14129.0" />
+    <create count="1" type="nebulas" startX="19376.0" startY="0.0" startZ="8834.0" endX="19376.0" endY="0.0" endZ="8834.0" />
+    <create count="10" type="asteroids" startX="52149.0" startY="0.0" startZ="36661.0" endX="52149.0" endY="0.0" endZ="36661.0" randomRange="1500" />
+    <create count="10" type="asteroids" startX="52249.0" startY="0.0" startZ="32464.0" endX="52249.0" endY="0.0" endZ="32464.0" randomRange="1700" />
+    <create count="10" type="asteroids" startX="51599.0" startY="0.0" startZ="27069.0" endX="51599.0" endY="0.0" endZ="27069.0" randomRange="1900" />
+    <create count="10" type="asteroids" startX="48502.0" startY="0.0" startZ="28667.0" endX="48502.0" endY="0.0" endZ="28667.0" randomRange="1500" />
+    <create count="10" type="asteroids" startX="45904.0" startY="0.0" startZ="26869.0" endX="45904.0" endY="0.0" endZ="26869.0" randomRange="2100" />
+    <create count="10" type="asteroids" startX="48302.0" startY="0.0" startZ="24221.0" endX="48302.0" endY="0.0" endZ="24221.0" randomRange="1500" />
+    <create count="10" type="asteroids" startX="46453.0" startY="0.0" startZ="20124.0" endX="46453.0" endY="0.0" endZ="20124.0" randomRange="2500" />
+    <create count="10" type="asteroids" startX="41158.0" startY="0.0" startZ="16577.0" endX="41158.0" endY="0.0" endZ="16577.0" randomRange="2700" />
+    <create count="10" type="asteroids" startX="41258.0" startY="0.0" startZ="20174.0" endX="41258.0" endY="0.0" endZ="20174.0" randomRange="2700" />
+    <create count="10" type="asteroids" startX="38810.0" startY="0.0" startZ="23372.0" endX="38810.0" endY="0.0" endZ="23372.0" randomRange="2600" />
+    <create count="10" type="asteroids" startX="33214.0" startY="0.0" startZ="19275.0" endX="33214.0" endY="0.0" endZ="19275.0" randomRange="2600" />
+    <create count="10" type="asteroids" startX="34963.0" startY="0.0" startZ="14079.0" endX="34963.0" endY="0.0" endZ="14079.0" randomRange="2600" />
+    <create count="10" type="asteroids" startX="29368.0" startY="0.0" startZ="10782.0" endX="29368.0" endY="0.0" endZ="10782.0" randomRange="2600" />
+    <create count="10" type="asteroids" startX="25271.0" startY="0.0" startZ="16677.0" endX="25271.0" endY="0.0" endZ="16677.0" randomRange="2600" />
+    <create count="20" type="asteroids" startX="21824.0" startY="0.0" startZ="11382.0" endX="21824.0" endY="0.0" endZ="11382.0" randomRange="2800" />
+    <create count="20" type="asteroids" startX="17927.0" startY="0.0" startZ="18026.0" endX="17927.0" endY="0.0" endZ="18026.0" randomRange="2900" />
+    <create count="25" type="asteroids" startX="12432.0" startY="0.0" startZ="16827.0" endX="12432.0" endY="0.0" endZ="16827.0" randomRange="3500" />
+    <create count="20" type="asteroids" startX="12032.0" startY="0.0" startZ="22572.0" endX="12032.0" endY="0.0" endZ="22572.0" randomRange="4000" />
+    <create count="15" type="asteroids" startX="5987.0" startY="0.0" startZ="20874.0" endX="5987.0" endY="0.0" endZ="20874.0" randomRange="2600" />
+    <create count="10" type="asteroids" startX="2790.0" startY="0.0" startZ="25370.0" endX="2790.0" endY="0.0" endZ="25370.0" randomRange="3500" />
+    <create count="10" type="asteroids" startX="8085.0" startY="0.0" startZ="27218.0" endX="8085.0" endY="0.0" endZ="27218.0" randomRange="4000" />
+    <create count="10" type="asteroids" startX="3689.0" startY="0.0" startZ="33663.0" endX="3689.0" endY="0.0" endZ="33663.0" randomRange="3000" />
+    <create count="10" type="asteroids" startX="1891.0" startY="0.0" startZ="40657.0" endX="1891.0" endY="0.0" endZ="40657.0" randomRange="2600" />
+    <create count="25" type="nebulas" startAngle="100" endAngle="170" startX="29268.0" startY="0.0" startZ="71881.0" radius="25000" randomRange="4500" />
+    <create count="50" type="asteroids" startX="1441.0" startY="0.0" startZ="81124.0" endX="23373.0" endY="0.0" endZ="97510.0" randomRange="4000" randomSeed="3" />
+    <create count="20" type="nebulas" startAngle="190" endAngle="240" startX="55396.0" startY="0.0" startZ="48800.0" radius="50000" randomRange="4000" randomSeed="80" />
+    <create count="75" type="asteroids" startX="98710.0" startY="0.0" startZ="74479.0" endX="69434.0" endY="0.0" endZ="97260.0" randomRange="5000" />
+    <create count="30" type="asteroids" startX="86370.0" startY="0.0" startZ="21723.0" endX="86370.0" endY="0.0" endZ="21723.0" randomRange="2500" randomSeed="2" />
+    <create count="25" type="asteroids" startX="83922.0" startY="0.0" startZ="15578.0" endX="83922.0" endY="0.0" endZ="15578.0" randomRange="2500" randomSeed="2" />
+    <create count="30" type="asteroids" startX="76928.0" startY="0.0" startZ="15228.0" endX="76928.0" endY="0.0" endZ="15228.0" randomRange="3000" randomSeed="9" />
+    <create count="30" type="asteroids" startX="95912.0" startY="0.0" startZ="21523.0" endX="95912.0" endY="0.0" endZ="21523.0" randomRange="3500" randomSeed="2" />
+    <create count="40" type="asteroids" startX="89368.0" startY="0.0" startZ="15578.0" endX="89368.0" endY="0.0" endZ="15578.0" randomRange="5000" randomSeed="2" />
+    <create count="40" type="asteroids" startX="47453.0" startY="0.0" startZ="57693.0" endX="47453.0" endY="0.0" endZ="57693.0" randomRange="30000" randomSeed="500" />
+    <create count="20" type="asteroids" startX="51349.0" startY="0.0" startZ="42156.0" radius="3000" randomRange="200" />
+    <create type="station" x="84254.0" y="0.0" z="26737.0" name="Shanari" hullID="1001" sideValue="sectorSide" />
+    <create type="station" x="77479.0" y="0.0" z="74918.0" name="Dalton" hullID="1001" sideValue="sectorSide" />
+    <create type="station" x="53689.0" y="0.0" z="54441.0" name="Arden" hullID="1001" sideValue="sectorSide" />
+    <create type="station" x="25233.0" y="0.0" z="68293.0" name="Cordell" hullID="1001" sideValue="sectorSide" />
+    <create type="station" x="9423.0" y="0.0" z="81543.0" name="M-572" hullID="1003" sideValue="sectorSide" />
+    <create type="station" x="26588.0" y="0.0" z="50526.0" name="M-331" hullID="1003" sideValue="sectorSide" />
+    <create type="station" x="54442.0" y="0.0" z="34416.0" name="RS-230" hullID="1004" sideValue="sectorSide" />
+    <create type="genericMesh" x="85000.0" y="0.0" z="55000.0" angle="0" name="Start/Finish" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create type="genericMesh" x="85000.0" y="0.0" z="60000.0" angle="0" name="Start/Finish" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create type="blackHole" x="51249.0" y="0.0" z="42156.0" />
+    <create type="genericMesh" x="69284.0" y="0.0" z="56694.0" angle="0" name="1-S" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="89568.0" y="0.0" z="72531.0" angle="0" name="2-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="79676.0" y="0.0" z="87818.0" angle="0" name="3-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="56245.0" y="0.0" z="64038.0" angle="0" name="4-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="51150.0" y="0.0" z="42156.0" angle="0" name="5-S" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="36162.0" y="0.0" z="51398.0" angle="0" name="6-S" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="25321.0" y="0.0" z="86119.0" angle="0" name="7-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="10883.0" y="0.0" z="66236.0" angle="0" name="8-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="15579.0" y="0.0" z="51998.0" angle="0" name="9-S" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="11782.0" y="0.0" z="30666.0" angle="0" name="10-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="56245.0" y="0.0" z="27019.0" angle="0" name="11-S" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="79576.0" y="0.0" z="19725.0" angle="0" name="12-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="genericMesh" x="94463.0" y="0.0" z="54596.0" angle="0" name="13-P" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <create type="station" x="93065.0" y="0.0" z="92864.0" angle="0" name="Baco Tell" hullID="1001" sideValue="2" />
+    <create type="station" x="11483.0" y="0.0" z="86769.0" angle="0" name="Ohio Fried Chicken" hullID="1001" sideValue="2" />
+    <create type="station" x="10184.0" y="0.0" z="22023.0" angle="0" name="McDuffys" hullID="1001" sideValue="2" />
+    <create type="station" x="91266.0" y="0.0" z="8084.0" angle="0" name="Koala Express" hullID="1001" sideValue="2" />
+    <create type="station" x="46304.0" y="0.0" z="49950.0" angle="0" name="End of Universe" hullID="1001" sideValue="2" />
+  </event>
+  <disabled_event name="Create Race 4 Sector I" id_arme="b0067f94-aa32-4fdf-ae26-c45a60baabec" parent_id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43">
+    <if_timer_finished name="Transition" />
+    <if_variable name="Race 4 System" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <set_skybox_index index="25" />
+    <set_variable name="Sector Entities" value="1.0" />
+    <set_variable name="Race 4 System" value="2.0" />
+    <set_variable name="Grid 5 Transition Enabled" value="0.0" />
+    <set_variable name="Grid 1 Transition Enabled" value="0.0" />
+    <set_variable name="Grid E Transition Enabled" value="0.0" />
+    <set_variable name="Grid A Transition Enabled" value="0.0" />
+    <set_variable name="Corner A1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner A5 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E1 Transition Enabled" value="0.0" />
+    <set_variable name="Corner E5 Transition Enabled" value="0.0" />
+    <create count="15" type="mines" startX="99999.0" startY="0.0" startZ="60000.0" endX="70000.0" endY="0.0" endZ="60000.0" />
+    <create count="10" type="mines" startX="70000.0" startY="0.0" startZ="60000.0" endX="70000.0" endY="0.0" endZ="75000.0" />
+    <create count="15" type="mines" startX="70000.0" startY="0.0" startZ="75000.0" endX="99999.0" endY="0.0" endZ="75000.0" />
+    <create count="20" type="mines" startX="99999.0" startY="0.0" startZ="75000.0" endX="100000.0" endY="0.0" endZ="87000.0" />
+    <create count="15" type="mines" startX="95000.0" startY="0.0" startZ="55000.0" endX="65000.0" endY="0.0" endZ="55000.0" />
+    <create count="20" type="mines" startX="65000.0" startY="0.0" startZ="55000.0" endX="65000.0" endY="0.0" endZ="80000.0" />
+    <create count="17" type="mines" startX="65000.0" startY="0.0" startZ="80000.0" endX="95000.0" endY="0.0" endZ="80000.0" />
+    <create count="10" type="mines" startX="95000.0" startY="0.0" startZ="80000.0" endX="95000.0" endY="0.0" endZ="84000.0" />
+    <create count="15" type="mines" startX="100000.0" startY="0.0" startZ="87000.0" endX="85000.0" endY="0.0" endZ="92000.0" />
+    <create count="10" type="mines" startX="95000.0" startY="0.0" startZ="84000.0" endX="85000.0" endY="0.0" endZ="90000.0" />
+    <create count="30" type="mines" startAngle="200" endAngle="110" startX="77727.0" startY="0.0" startZ="71432.0" radius="20000" />
+    <create count="30" type="mines" startAngle="200" endAngle="110" startX="76678.0" startY="0.0" startZ="70582.0" radius="23000" />
+    <create count="26" type="mines" startAngle="290" endAngle="450" startX="45654.0" startY="0.0" startZ="82023.0" radius="10000" />
+    <create count="26" type="mines" startAngle="290" endAngle="445" startX="43956.0" startY="0.0" startZ="83372.0" radius="16000" />
+    <create count="1" type="nebulas" startX="33764.0" startY="0.0" startZ="80924.0" endX="33764.0" endY="0.0" endZ="80924.0" />
+    <create count="1" type="nebulas" startX="30267.0" startY="0.0" startZ="80574.0" endX="30267.0" endY="0.0" endZ="80574.0" />
+    <create count="1" type="nebulas" startX="34913.0" startY="0.0" startZ="77726.0" endX="34913.0" endY="0.0" endZ="77726.0" />
+    <create count="1" type="nebulas" startX="31666.0" startY="0.0" startZ="76677.0" endX="31666.0" endY="0.0" endZ="76677.0" />
+    <create count="1" type="nebulas" startX="36412.0" startY="0.0" startZ="74529.0" endX="36412.0" endY="0.0" endZ="74529.0" />
+    <create count="1" type="nebulas" startX="33264.0" startY="0.0" startZ="73580.0" endX="33264.0" endY="0.0" endZ="73580.0" />
+    <create count="1" type="nebulas" startX="29418.0" startY="0.0" startZ="73780.0" endX="29418.0" endY="0.0" endZ="73780.0" />
+    <create count="1" type="nebulas" startX="27719.0" startY="0.0" startZ="77327.0" endX="27719.0" endY="0.0" endZ="77327.0" />
+    <create count="1" type="nebulas" startX="38410.0" startY="0.0" startZ="77577.0" endX="38410.0" endY="0.0" endZ="77577.0" />
+    <create count="1" type="nebulas" startX="36911.0" startY="0.0" startZ="81024.0" endX="36911.0" endY="0.0" endZ="81024.0" />
+    <create count="1" type="nebulas" startX="26220.0" startY="0.0" startZ="81124.0" endX="26220.0" endY="0.0" endZ="81124.0" />
+    <create count="1" type="nebulas" startX="15929.0" startY="0.0" startZ="77726.0" endX="15929.0" endY="0.0" endZ="77726.0" />
+    <create count="1" type="nebulas" startX="18876.0" startY="0.0" startZ="72531.0" endX="18876.0" endY="0.0" endZ="72531.0" />
+    <create count="1" type="nebulas" startX="10433.0" startY="0.0" startZ="77826.0" endX="10433.0" endY="0.0" endZ="77826.0" />
+    <create count="1" type="nebulas" startX="7086.0" startY="0.0" startZ="73180.0" endX="7086.0" endY="0.0" endZ="73180.0" />
+    <create count="1" type="nebulas" startX="19476.0" startY="0.0" startZ="67335.0" endX="19476.0" endY="0.0" endZ="67335.0" />
+    <create count="1" type="nebulas" startX="13231.0" startY="0.0" startZ="67335.0" endX="13231.0" endY="0.0" endZ="67335.0" />
+    <create count="1" type="nebulas" startX="7586.0" startY="0.0" startZ="67435.0" endX="7586.0" endY="0.0" endZ="67435.0" />
+    <create count="1" type="nebulas" startX="23323.0" startY="0.0" startZ="72980.0" endX="23323.0" endY="0.0" endZ="72980.0" />
+    <create count="1" type="nebulas" startX="31616.0" startY="0.0" startZ="83921.0" endX="31616.0" endY="0.0" endZ="83921.0" />
+    <create count="1" type="nebulas" startX="28169.0" startY="0.0" startZ="83572.0" endX="28169.0" endY="0.0" endZ="83572.0" />
+    <create count="1" type="nebulas" startX="25221.0" startY="0.0" startZ="84571.0" endX="25221.0" endY="0.0" endZ="84571.0" />
+    <create count="1" type="nebulas" startX="29518.0" startY="0.0" startZ="86669.0" endX="29518.0" endY="0.0" endZ="86669.0" />
+    <create count="1" type="nebulas" startX="14880.0" startY="0.0" startZ="82373.0" endX="14880.0" endY="0.0" endZ="82373.0" />
+    <create count="1" type="nebulas" startX="23972.0" startY="0.0" startZ="68184.0" endX="23972.0" endY="0.0" endZ="68184.0" />
+    <create count="1" type="nebulas" startX="19376.0" startY="0.0" startZ="81174.0" endX="19376.0" endY="0.0" endZ="81174.0" />
+    <create count="1" type="nebulas" startX="14580.0" startY="0.0" startZ="59991.0" endX="14580.0" endY="0.0" endZ="59991.0" />
+    <create count="1" type="nebulas" startX="9834.0" startY="0.0" startZ="55145.0" endX="9834.0" endY="0.0" endZ="55145.0" />
+    <create count="1" type="nebulas" startX="8085.0" startY="0.0" startZ="61440.0" endX="8085.0" endY="0.0" endZ="61440.0" />
+    <create count="1" type="nebulas" startX="4039.0" startY="0.0" startZ="56544.0" endX="4039.0" endY="0.0" endZ="56544.0" />
+    <create count="1" type="nebulas" startX="3040.0" startY="0.0" startZ="62389.0" endX="3040.0" endY="0.0" endZ="62389.0" />
+    <create count="1" type="nebulas" startX="5338.0" startY="0.0" startZ="59592.0" endX="5338.0" endY="0.0" endZ="59592.0" />
+    <create count="1" type="nebulas" startX="12682.0" startY="0.0" startZ="57293.0" endX="12682.0" endY="0.0" endZ="57293.0" />
+    <create count="1" type="nebulas" startX="21574.0" startY="0.0" startZ="59941.0" endX="21574.0" endY="0.0" endZ="59941.0" />
+    <create count="1" type="nebulas" startX="20025.0" startY="0.0" startZ="56694.0" endX="20025.0" endY="0.0" endZ="56694.0" />
+    <create count="1" type="nebulas" startX="18427.0" startY="0.0" startZ="54146.0" endX="18427.0" endY="0.0" endZ="54146.0" />
+    <create count="1" type="nebulas" startX="16478.0" startY="0.0" startZ="51798.0" endX="16478.0" endY="0.0" endZ="51798.0" />
+    <create count="40" type="mines" startAngle="270" endAngle="110" startX="17478.0" startY="0.0" startZ="82123.0" radius="18000" />
+    <create count="25" type="mines" startX="27269.0" startY="0.0" startZ="81423.0" endX="17777.0" endY="0.0" endZ="52048.0" />
+    <create count="1" type="nebulas" startX="9185.0" startY="0.0" startZ="83372.0" endX="9185.0" endY="0.0" endZ="83372.0" />
+    <create count="1" type="nebulas" startX="29468.0" startY="0.0" startZ="92114.0" endX="29468.0" endY="0.0" endZ="92114.0" />
+    <create count="1" type="nebulas" startX="25171.0" startY="0.0" startZ="90016.0" endX="25171.0" endY="0.0" endZ="90016.0" />
+    <create count="1" type="nebulas" startX="20425.0" startY="0.0" startZ="96161.0" endX="20425.0" endY="0.0" endZ="96161.0" />
+    <create count="1" type="nebulas" startX="13381.0" startY="0.0" startZ="94762.0" endX="13381.0" endY="0.0" endZ="94762.0" />
+    <create count="1" type="nebulas" startX="17827.0" startY="0.0" startZ="91015.0" endX="17827.0" endY="0.0" endZ="91015.0" />
+    <create count="1" type="nebulas" startX="12881.0" startY="0.0" startZ="87119.0" endX="12881.0" endY="0.0" endZ="87119.0" />
+    <create count="1" type="nebulas" startX="8035.0" startY="0.0" startZ="89716.0" endX="8035.0" endY="0.0" endZ="89716.0" />
+    <create count="1" type="nebulas" startX="4289.0" startY="0.0" startZ="84721.0" endX="4289.0" endY="0.0" endZ="84721.0" />
+    <create count="1" type="nebulas" startX="3389.0" startY="0.0" startZ="89866.0" endX="3389.0" endY="0.0" endZ="89866.0" />
+    <create count="1" type="nebulas" startX="8035.0" startY="0.0" startZ="95362.0" endX="8035.0" endY="0.0" endZ="95362.0" />
+    <create count="1" type="nebulas" startX="1641.0" startY="0.0" startZ="78925.0" endX="1641.0" endY="0.0" endZ="78925.0" />
+    <create count="1" type="nebulas" startX="1441.0" startY="0.0" startZ="65686.0" endX="1441.0" endY="0.0" endZ="65686.0" />
+    <create count="1" type="nebulas" startX="1141.0" startY="0.0" startZ="59192.0" endX="1141.0" endY="0.0" endZ="59192.0" />
+    <create count="1" type="nebulas" startX="1091.0" startY="0.0" startZ="54746.0" endX="1091.0" endY="0.0" endZ="54746.0" />
+    <create count="1" type="nebulas" startX="9334.0" startY="0.0" startZ="51348.0" endX="9334.0" endY="0.0" endZ="51348.0" />
+    <create count="1" type="nebulas" startX="4089.0" startY="0.0" startZ="49150.0" endX="4089.0" endY="0.0" endZ="49150.0" />
+    <create count="1" type="nebulas" startX="12881.0" startY="0.0" startZ="45853.0" endX="12881.0" endY="0.0" endZ="45853.0" />
+    <create count="1" type="nebulas" startX="7686.0" startY="0.0" startZ="44154.0" endX="7686.0" endY="0.0" endZ="44154.0" />
+    <create count="27" type="mines" startX="17378.0" startY="0.0" startZ="50949.0" endX="8385.0" endY="0.0" endZ="20074.0" />
+    <create count="10" type="mines" startX="8435.0" startY="0.0" startZ="19175.0" endX="8585.0" endY="0.0" endZ="9683.0" />
+    <create count="10" type="mines" startX="8685.0" startY="0.0" startZ="6236.0" endX="15279.0" endY="0.0" endZ="6086.0" />
+    <create count="10" type="mines" startX="8885.0" startY="0.0" startZ="3039.0" endX="20975.0" endY="0.0" endZ="2889.0" />
+    <create count="10" type="mines" startX="12232.0" startY="0.0" startZ="9583.0" endX="12332.0" endY="0.0" endZ="18276.0" />
+    <create count="15" type="mines" startX="12532.0" startY="0.0" startZ="19225.0" endX="19176.0" endY="0.0" endZ="38959.0" />
+    <create count="20" type="mines" startX="0.0" startY="0.0" startZ="0.0" endX="28868.0" endY="0.0" endZ="0.0" />
+    <create count="8" type="mines" startX="21025.0" startY="0.0" startZ="2889.0" endX="20825.0" endY="0.0" endZ="9034.0" />
+    <create count="6" type="mines" startX="20825.0" startY="0.0" startZ="9034.0" endX="15679.0" endY="0.0" endZ="9283.0" />
+    <create count="12" type="mines" startX="28968.0" startY="0.0" startZ="41.0" endX="28768.0" endY="0.0" endZ="12281.0" />
+    <create count="15" type="mines" startX="28768.0" startY="0.0" startZ="12431.0" endX="12232.0" endY="0.0" endZ="13430.0" />
+    <create count="150" type="asteroids" startX="87369.0" startY="0.0" startZ="11132.0" endX="87369.0" endY="0.0" endZ="11132.0" randomRange="11500" randomSeed="650" />
+    <create type="station" x="84254.0" y="0.0" z="26737.0" name="Shanari" hullID="1001" sideValue="sectorSide" />
+    <create type="station" x="77479.0" y="0.0" z="74918.0" name="Dalton" hullID="1001" sideValue="sectorSide" />
+    <create type="station" x="53689.0" y="0.0" z="54441.0" name="Arden" hullID="1001" sideValue="sectorSide" />
+    <create type="station" x="25233.0" y="0.0" z="68293.0" name="Cordell" hullID="1001" sideValue="sectorSide" />
+    <create type="station" x="9423.0" y="0.0" z="81543.0" name="M-572" hullID="1003" sideValue="sectorSide" />
+    <create type="station" x="26588.0" y="0.0" z="50526.0" name="M-331" hullID="1003" sideValue="sectorSide" />
+    <create type="station" x="54442.0" y="0.0" z="34416.0" name="RS-230" hullID="1004" sideValue="sectorSide" />
+    <create type="genericMesh" x="85000.0" y="0.0" z="55000.0" angle="0" name="Start/Finish" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+    <create type="genericMesh" x="85000.0" y="0.0" z="60000.0" angle="0" name="Start/Finish" meshFileName="dat\mine.dxs" textureFileName="dat\mine1.png" colorRed="0.0" colorGreen="1.0" colorBlue="0.0" />
+  </disabled_event>
+  <folder_arme name="" id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea" parent_id_arme="2cfb2887-234f-46da-9b94-9c8262d88e43" expanded_arme="" />
+  <event name="Generate Sector Entities" id_arme="bc7ad158-0849-4f78-b0d0-5e6158d525df" parent_id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea">
+    <if_variable name="Race 4 System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="1.0" />
+    <set_variable name="ExitorRetreat" value="0.0" />
+    <set_variable name="Sector Entities" value="2.0" />
+  </event>
+  <event name="Settings" id_arme="e00da0e4-4c20-4d86-9404-6991d6a2ba3e" parent_id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea">
+    <if_variable name="Race 4 System" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="1" />
+    <if_variable name="Sector Entities" comparator="EQUALS" value="2.0" />
+    <set_variable name="Sector Entities" value="3.0" />
+  </event>
+  <event name="Destroy Sector Entities" id_arme="1dff5f1a-c0ea-46bc-8718-71390228de49" parent_id_arme="a5645101-1159-46d2-aa8f-e9dac7a39cea">
+    <if_variable name="Race 4 System" comparator="EQUALS" value="3.0" />
+    <set_variable name="Race 4 System" value="System" />
+    <set_variable name="Sector Entities" value="0.0" />
+  </event>
+</mission_data>
