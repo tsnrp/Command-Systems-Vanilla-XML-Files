@@ -187,11 +187,11 @@
     <clear_gm_button text="Area Waypoints\24k Area" />
     <clear_gm_button text="Remove All Waypoints" />
     <!--Custom Keys-->
-    <clear_gm_button text="Menu 1\Custom 1A" />
-    <clear_gm_button text="Menu 1\Custom 1B" />
-    <clear_gm_button text="Menu 1\Custom 1C" />
-    <clear_gm_button text="Menu 1\Custom 1D" />
-    <clear_gm_button text="Menu 1\Custom 1E" />
+    <clear_gm_button text="Menu 1\100 Energy" />
+    <clear_gm_button text="Menu 1\Boost 25" />
+    <clear_gm_button text="Menu 1\Boost 30" />
+    <clear_gm_button text="Menu 1\Boost 35" />
+    <clear_gm_button text="Menu 1\Boost 40" />
     <clear_gm_button text="Menu 1\Custom 1F" />
     <clear_gm_button text="Menu 2\Custom 2A" />
     <clear_gm_button text="Menu 2\Custom 2B" />
@@ -409,14 +409,14 @@
   </event>
   <event name="All to GM" id_arme="ff188d70-3ba2-49e6-a78c-4776d6c59262" parent_id_arme="0495fdca-3d86-4cab-a403-d2dbdffe127e">
     <if_gm_button text="PlyrToGM" />
-    <set_to_gm_position player_slot="0" distance="300" angle="45" />
-    <set_to_gm_position player_slot="1" distance="200" angle="0" />
-    <set_to_gm_position player_slot="2" distance="200" angle="90" />
-    <set_to_gm_position player_slot="3" distance="300" angle="315" />
-    <set_to_gm_position player_slot="4" distance="300" angle="135" />
-    <set_to_gm_position player_slot="5" distance="500" angle="270" />
-    <set_to_gm_position player_slot="6" distance="500" angle="180" />
-    <set_to_gm_position player_slot="7" distance="300" angle="225" />
+    <set_to_gm_position player_slot="0" distance="400" angle="0" />
+    <set_to_gm_position player_slot="1" distance="300" angle="0" />
+    <set_to_gm_position player_slot="2" distance="200" angle="0" />
+    <set_to_gm_position player_slot="3" distance="100" angle="0" />
+    <set_to_gm_position player_slot="4" distance="100" angle="180" />
+    <set_to_gm_position player_slot="5" distance="200" angle="180" />
+    <set_to_gm_position player_slot="6" distance="300" angle="180" />
+    <set_to_gm_position player_slot="7" distance="400" angle="180" />
     <set_object_property property="angle" value="0.785398163" player_slot="0" />
     <set_object_property property="angle" value="0.785398163" player_slot="1" />
     <set_object_property property="angle" value="0.785398163" player_slot="2" />
@@ -45133,11 +45133,11 @@
     <if_timer_finished name="GM Menu" />
     <if_variable name="GM Menu" comparator="EQUALS" value="12.0" />
     <set_gm_button text="Clear" x="120" y="60" h="30" w="60" />
-    <set_gm_button text="Menu 1\Custom 1A" />
-    <set_gm_button text="Menu 1\Custom 1B" />
-    <set_gm_button text="Menu 1\Custom 1C" />
-    <set_gm_button text="Menu 1\Custom 1D" />
-    <set_gm_button text="Menu 1\Custom 1E" />
+    <set_gm_button text="Menu 1\100 Energy" />
+    <set_gm_button text="Menu 1\Boost 25" />
+    <set_gm_button text="Menu 1\Boost 30" />
+    <set_gm_button text="Menu 1\Boost 35" />
+    <set_gm_button text="Menu 1\Boost 40" />
     <!--<set_gm_button text="Menu 1\Custom 1F" />-->
     <!--<set_gm_button text="Menu 2\Custom 2A" />-->
     <!--<set_gm_button text="Menu 2\Custom 2B" />-->
@@ -45182,15 +45182,15 @@
     <clear_gm_button text="Menu 2\Custom 2B" />
     <clear_gm_button text="Menu 2\Custom 2A" />
     <clear_gm_button text="Menu 1\Custom 1F" />
-    <clear_gm_button text="Menu 1\Custom 1E" />
-    <clear_gm_button text="Menu 1\Custom 1D" />
-    <clear_gm_button text="Menu 1\Custom 1C" />
-    <clear_gm_button text="Menu 1\Custom 1B" />
-    <clear_gm_button text="Menu 1\Custom 1A" />
+    <clear_gm_button text="Menu 1\Boost 40" />
+    <clear_gm_button text="Menu 1\Boost 35" />
+    <clear_gm_button text="Menu 1\Boost 30" />
+    <clear_gm_button text="Menu 1\Boost 25" />
+    <clear_gm_button text="Menu 1\100 Energy" />
   </event>
   <folder_arme name="Menu 1" id_arme="0fc9dd71-2783-4713-a773-bca1116e079d" parent_id_arme="a4eb80ae-97a6-49ea-8d5c-aab308c0ea87" />
   <event name="Custom 1A" id_arme="ca61c48e-4b38-4e81-88bf-48098ab3fc71" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
-    <if_gm_button text="Menu 1\Custom 1A" />
+    <if_gm_button text="Menu 1\100 Energy" />
     <if_variable name="Custom 1A" comparator="EQUALS" value="0.0" />
     <warning_popup_message message="Energy Stablised: 1000" consoles="MHWESCOF" />
     <set_timer name="Custom 1A END" seconds="3" />
@@ -45218,14 +45218,14 @@
     <set_variable name="Custom 1A" value="1.0" />
   </event>
   <event name="1A Delete" id_arme="afe474f5-c0ec-4308-b55b-40eccd4982aa" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
-    <if_gm_button text="Menu 1\Custom 1A" />
+    <if_gm_button text="Menu 1\100 Energy" />
     <if_variable name="Custom 1A" comparator="GREATER_EQUAL" value="1.0" />
     <if_timer_finished name="Custom 1A END" />
     <warning_popup_message message="Energy Normal" consoles="MHWESCOF" />
     <set_variable name="Custom 1A" value="0.0" />
   </event>
   <event name="Custom 1B" id_arme="4137bdc3-9d7c-4cd9-9fab-d84e1f1621dd" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
-    <if_gm_button text="Menu 1\Custom 1B" />
+    <if_gm_button text="Menu 1\Boost 25" />
     <if_variable name="Custom 1B" comparator="EQUALS" value="0.0" />
     <warning_popup_message message="Energy Boost Applied" consoles="MHWESCOF" />
     <set_timer name="Custom 1B END" seconds="3" />
@@ -45235,14 +45235,14 @@
   <event name="1B Settings" id_arme="54128249-11c4-4bca-b5fc-fc413165874a" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
     <if_timer_finished name="Custom 1B" />
     <if_variable name="Custom 1B" comparator="EQUALS" value="1.0" />
-    <addto_object_property value="30.0" property="energy" player_slot="0" />
-    <addto_object_property value="30.0" property="energy" player_slot="1" />
-    <addto_object_property value="30.0" property="energy" player_slot="2" />
-    <addto_object_property value="30.0" property="energy" player_slot="3" />
-    <addto_object_property value="30.0" property="energy" player_slot="4" />
-    <addto_object_property value="30.0" property="energy" player_slot="5" />
-    <addto_object_property value="30.0" property="energy" player_slot="6" />
-    <addto_object_property value="30.0" property="energy" player_slot="7" />
+    <addto_object_property value="25.0" property="energy" player_slot="0" />
+    <addto_object_property value="25.0" property="energy" player_slot="1" />
+    <addto_object_property value="25.0" property="energy" player_slot="2" />
+    <addto_object_property value="25.0" property="energy" player_slot="3" />
+    <addto_object_property value="25.0" property="energy" player_slot="4" />
+    <addto_object_property value="25.0" property="energy" player_slot="5" />
+    <addto_object_property value="25.0" property="energy" player_slot="6" />
+    <addto_object_property value="25.0" property="energy" player_slot="7" />
     <set_timer name="Custom 1B" seconds="1" />
     <set_variable name="Custom 1B" value="2.0" integer="yes" />
   </event>
@@ -45253,14 +45253,14 @@
     <set_variable name="Custom 1B" value="1.0" integer="yes" />
   </event>
   <event name="1B Delete" id_arme="74937219-f0f7-4f6d-9a88-2ebb2d652596" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
-    <if_gm_button text="Menu 1\Custom 1B" />
+    <if_gm_button text="Menu 1\Boost 25" />
     <if_variable name="Custom 1B" comparator="GREATER_EQUAL" value="1.0" />
     <if_timer_finished name="Custom 1B END" />
     <warning_popup_message message="Energy Boost Offline" consoles="MHWESCOF" />
     <set_variable name="Custom 1B" value="0.0" />
   </event>
   <event name="Custom 1C" id_arme="cdf7e75b-99c5-49ee-9efc-d37e3ab41d47" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
-    <if_gm_button text="Menu 1\Custom 1C" />
+    <if_gm_button text="Menu 1\Boost 30" />
     <if_variable name="Custom 1C" comparator="EQUALS" value="0.0" />
     <warning_popup_message message="Energy Boost Applied" consoles="MHWESCOF" />
     <set_timer name="Custom 1C END" seconds="3" />
@@ -45270,14 +45270,14 @@
   <event name="1C Settings" id_arme="bbc5f291-d1e3-4eed-b373-81d8af6695f1" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
     <if_timer_finished name="Custom 1C" />
     <if_variable name="Custom 1C" comparator="EQUALS" value="1.0" />
-    <addto_object_property value="35.0" property="energy" player_slot="0" />
-    <addto_object_property value="35.0" property="energy" player_slot="1" />
-    <addto_object_property value="35.0" property="energy" player_slot="2" />
-    <addto_object_property value="35.0" property="energy" player_slot="3" />
-    <addto_object_property value="35.0" property="energy" player_slot="4" />
-    <addto_object_property value="35.0" property="energy" player_slot="5" />
-    <addto_object_property value="35.0" property="energy" player_slot="6" />
-    <addto_object_property value="35.0" property="energy" player_slot="7" />
+    <addto_object_property value="30.0" property="energy" player_slot="0" />
+    <addto_object_property value="30.0" property="energy" player_slot="1" />
+    <addto_object_property value="30.0" property="energy" player_slot="2" />
+    <addto_object_property value="30.0" property="energy" player_slot="3" />
+    <addto_object_property value="30.0" property="energy" player_slot="4" />
+    <addto_object_property value="30.0" property="energy" player_slot="5" />
+    <addto_object_property value="30.0" property="energy" player_slot="6" />
+    <addto_object_property value="30.0" property="energy" player_slot="7" />
     <set_timer name="Custom 1C" seconds="1" />
     <set_variable name="Custom 1C" value="2.0" integer="yes" />
   </event>
@@ -45288,14 +45288,14 @@
     <set_variable name="Custom 1C" value="1.0" integer="yes" />
   </event>
   <event name="1C Delete" id_arme="abff22bd-3bc8-4ea6-b548-fbf1e910112d" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
-    <if_gm_button text="Menu 1\Custom 1C" />
+    <if_gm_button text="Menu 1\Boost 30" />
     <if_variable name="Custom 1C" comparator="GREATER_EQUAL" value="1.0" />
     <if_timer_finished name="Custom 1C END" />
     <warning_popup_message message="Energy Boost Offline" consoles="MHWESCOF" />
     <set_variable name="Custom 1C" value="0.0" />
   </event>
   <event name="Custom 1D" id_arme="80148e5a-6c32-4fbf-bd8a-0d230bd9762f" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
-    <if_gm_button text="Menu 1\Custom 1D" />
+    <if_gm_button text="Menu 1\Boost 35" />
     <if_variable name="Custom 1D" comparator="EQUALS" value="0.0" />
     <warning_popup_message message="Energy Boost Applied" consoles="MHWESCOF" />
     <set_timer name="Custom 1D END" seconds="3" />
@@ -45305,14 +45305,14 @@
   <event name="1D Settings" id_arme="b3885cbf-ea95-4eee-a611-22469648e53e" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
     <if_timer_finished name="Custom 1D" />
     <if_variable name="Custom 1D" comparator="EQUALS" value="1.0" />
-    <addto_object_property value="40.0" property="energy" player_slot="0" />
-    <addto_object_property value="40.0" property="energy" player_slot="1" />
-    <addto_object_property value="40.0" property="energy" player_slot="2" />
-    <addto_object_property value="40.0" property="energy" player_slot="3" />
-    <addto_object_property value="40.0" property="energy" player_slot="4" />
-    <addto_object_property value="40.0" property="energy" player_slot="5" />
-    <addto_object_property value="40.0" property="energy" player_slot="6" />
-    <addto_object_property value="40.0" property="energy" player_slot="7" />
+    <addto_object_property value="35.0" property="energy" player_slot="0" />
+    <addto_object_property value="35.0" property="energy" player_slot="1" />
+    <addto_object_property value="35.0" property="energy" player_slot="2" />
+    <addto_object_property value="35.0" property="energy" player_slot="3" />
+    <addto_object_property value="35.0" property="energy" player_slot="4" />
+    <addto_object_property value="35.0" property="energy" player_slot="5" />
+    <addto_object_property value="35.0" property="energy" player_slot="6" />
+    <addto_object_property value="35.0" property="energy" player_slot="7" />
     <set_timer name="Custom 1D" seconds="1" />
     <set_variable name="Custom 1D" value="2.0" integer="yes" />
   </event>
@@ -45323,14 +45323,14 @@
     <set_variable name="Custom 1D" value="1.0" integer="yes" />
   </event>
   <event name="1D Delete" id_arme="29952c55-7dd1-44ef-b4c5-6f27264d7d1d" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
-    <if_gm_button text="Menu 1\Custom 1D" />
+    <if_gm_button text="Menu 1\Boost 35" />
     <if_variable name="Custom 1D" comparator="GREATER_EQUAL" value="1.0" />
     <if_timer_finished name="Custom 1D END" />
     <warning_popup_message message="Energy Boost Offline" consoles="MHWESCOF" />
     <set_variable name="Custom 1D" value="0.0" />
   </event>
   <event name="Custom 1E" id_arme="7f19a597-fd5a-4a5a-8725-b8a44c56e4a1" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
-    <if_gm_button text="Menu 1\Custom 1E" />
+    <if_gm_button text="Menu 1\Boost 40" />
     <if_variable name="Custom 1E" comparator="EQUALS" value="0.0" />
     <warning_popup_message message="Energy Boost Applied" consoles="MHWESCOF" />
     <set_timer name="Custom 1E END" seconds="3" />
@@ -45340,14 +45340,14 @@
   <event name="1E Settings" id_arme="7a27dd47-07d8-43bd-a71d-7e525dffcecf" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
     <if_timer_finished name="Custom 1E" />
     <if_variable name="Custom 1E" comparator="EQUALS" value="1.0" />
-    <addto_object_property value="45.0" property="energy" player_slot="0" />
-    <addto_object_property value="45.0" property="energy" player_slot="1" />
-    <addto_object_property value="45.0" property="energy" player_slot="2" />
-    <addto_object_property value="45.0" property="energy" player_slot="3" />
-    <addto_object_property value="45.0" property="energy" player_slot="4" />
-    <addto_object_property value="45.0" property="energy" player_slot="5" />
-    <addto_object_property value="45.0" property="energy" player_slot="6" />
-    <addto_object_property value="45.0" property="energy" player_slot="7" />
+    <addto_object_property value="40.0" property="energy" player_slot="0" />
+    <addto_object_property value="40.0" property="energy" player_slot="1" />
+    <addto_object_property value="40.0" property="energy" player_slot="2" />
+    <addto_object_property value="40.0" property="energy" player_slot="3" />
+    <addto_object_property value="40.0" property="energy" player_slot="4" />
+    <addto_object_property value="40.0" property="energy" player_slot="5" />
+    <addto_object_property value="40.0" property="energy" player_slot="6" />
+    <addto_object_property value="40.0" property="energy" player_slot="7" />
     <set_timer name="Custom 1E" seconds="1" />
     <set_variable name="Custom 1E" value="2.0" integer="yes" />
   </event>
@@ -45358,7 +45358,7 @@
     <set_variable name="Custom 1E" value="1.0" integer="yes" />
   </event>
   <event name="1E Delete" id_arme="6c1e4deb-9548-4316-bc50-b743250f41e4" parent_id_arme="0fc9dd71-2783-4713-a773-bca1116e079d">
-    <if_gm_button text="Menu 1\Custom 1E" />
+    <if_gm_button text="Menu 1\Boost 40" />
     <if_variable name="Custom 1E" comparator="GREATER_EQUAL" value="1.0" />
     <if_timer_finished name="Custom 1E END" />
     <warning_popup_message message="Energy Boost Offline" consoles="MHWESCOF" />
